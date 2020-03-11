@@ -2,7 +2,10 @@
   <!-- 搜索条框 -->
   <view class="search">
     <view class="icon-sousuo"></view>
-    <input placeholder="搜索课程" placeholder-class="search-text" class="search-bar"></input>
+    <input placeholder="搜索课程" placeholder-class="search-text" class="search-bar" bindinput="searchInput" value="{{initvalue}}"></input>
+    <view class="search-content" style="display:{{contentshow}}">
+      <text wx:for="{{arr}}" wx:key="*this" bindtap="tovideo" data-flag="{{item}}">{{item}}\n</text>
+    </view>
   </view>
   <!-- 轮播图 -->
   <view class="carousel">
