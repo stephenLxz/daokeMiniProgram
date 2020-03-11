@@ -1,0 +1,32 @@
+<view class="container">
+  <view class="pic-video">
+    <image src="{{indexSrc}}" style="display:{{picshow}}"></image>
+    <video style="display: {{videoshow}}" src="{{src}}" bindplay="videoPlay" bindended="videoEnd" show-mute-btn controls></video>
+  </view>
+  <view class="title-bar">
+    <text class="{{state === 0 ? 'selected' : ''}}" bindtap="contentshow">简介</text>
+    <text class="{{state === 1 ? 'selected' : ''}}" bindtap="catalogshow">目录</text>
+  </view>
+
+  <!-- 简介内容 -->
+  <view class="content" style="display:{{content}}">
+    <view class="title">
+      <text>{{courseTitle}}</text>
+      <button bindtap="btnCollect" disabled="{{disabled}}">{{btn}}</button>
+    </view>
+    <view class="intro">
+      <text class="intro-title">课程内容介绍</text>
+      <text>{{courseContent}}</text>
+      <text class="intro-title">适用人群</text>
+      <text>{{coursePeople}}</text>
+    </view>
+  </view>
+
+  <!-- 目录内容 -->
+  <view class="catalog" style="display:{{catalog}}" wx:for="{{catalogTitle}}" wx:key='*this'>
+    <view class="item" data-index="{{index}}" bindtap="selectSrc">
+      <image src="{{selectIndex === index ? '../../res/icon/video_selected.png' : '../../res/icon/video.png'}}"></image>
+      <text class="{{selectIndex === index ? 'textSelected' : ''}}">{{item}}</text>
+    </view>
+  </view>
+</view>

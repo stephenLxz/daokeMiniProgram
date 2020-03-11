@@ -1,0 +1,11 @@
+<!--pages/about/about.wxml-->
+<view class="container">
+  <view class="middle">
+    <view class="logo">
+      <image src="../../res/logo/logo.png" />
+    </view>
+    <view class="logo-title">道客学堂</view>
+    <view class="company">上海掌控设计科技工作室</view>
+    <view class="version">版本号 1.0.0</view>
+  </view>
+</view>

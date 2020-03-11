@@ -1,0 +1,102 @@
+Page {
+  background-color: #fff;
+}
+
+.write {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 20rpx;
+  width: 100%;
+}
+
+.write .write-title {
+  padding: 15rpx 0;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  border-top: 1rpx solid #a5a5a5;
+  border-bottom: 1rpx solid #a5a5a5;
+}
+
+.write .write-title text {
+  margin-left: 6%;
+  text-align: left;
+  width: 14%;
+  font-size: 34rpx;
+}
+
+.write .write-title input {
+  width: 86%;
+  padding-left: 20rpx;
+  font-size: 32rpx;
+}
+
+.textareaStyle {
+  width: 88%;
+  font-size: 32rpx;
+  line-height: 36rpx;
+  padding: 15rpx 0 0 20rpx;
+  border-radius: 15rpx;
+  border: 3rpx solid #a5a5a5;
+  margin-top: 30rpx;
+}
+
+.textareaPla {
+  font-size: 32rpx;
+}
+
+.btn-write {
+  width: 92% !important;
+  border: none;
+  margin: 36rpx 0;
+  background-color: #1296db;
+  color: #fff;
+}
+
+.show {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
+.show-title {
+  width: 100%;
+  padding: 70rpx 0 36rpx;
+  text-align: center;
+}
+
+.show-content {
+  padding-bottom: 30rpx;
+  width: 100%;
+}
+
+.content-title {
+  width: 100%;
+  padding: 10rpx 6%;
+  box-sizing: border-box;
+  overflow: hidden;
+  position: relative;
+}
+
+.content-title image {
+  width: 36rpx;
+  height: 36rpx;
+  position: absolute;
+  top: 50%;
+  right: 6%;
+  transform: translateY(-50%);
+}
+
+.contents {
+  width: 100%;
+  height: 80rpx;
+  padding: 0 6% 0 6%;
+  font-size: 32rpx;
+  line-height: 40rpx;
+  color: #a5a5a5;
+  text-align: justify;
+  overflow: hidden;
+  box-sizing: border-box;
+}

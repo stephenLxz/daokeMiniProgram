@@ -1,0 +1,41 @@
+.box {
+  height: 20rpx;
+  width: 100%;
+  background-color: #fff !important;
+}
+
+.item {
+  width: 100%;
+}
+
+.item-title {
+  border-bottom: 2rpx solid #f0f0f0;
+  padding: 20rpx 0 20rpx 30rpx;
+  position: relative;
+  box-sizing: content-box;
+  background-color: #fff !important;
+}
+
+.item-title text {
+  font-size: 36rpx;
+  background-color: #fff !important;
+}
+
+.item-title image {
+  width: 30rpx;
+  height: 30rpx;
+  position: absolute;
+  top: 50%;
+  right: 30rpx;
+  transform: translateY(-50%);
+}
+
+.item-content {
+  text-align: justify;
+  line-height: 50rpx;
+  padding: 12rpx 30rpx;
+  font-size: 32rpx;
+  color: #999;
+  margin-bottom: 35rpx;
+  background-color: #fff !important;
+}

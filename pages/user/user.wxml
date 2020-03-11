@@ -1,0 +1,81 @@
+<view class="container">
+  <!-- 头像部分 -->
+  <view class="userInfo">
+    <view class="userImage" style="display:{{displayview}}">
+      <image src="{{userimg}}"></image>
+    </view>
+    <view class="userName" style="display:{{displayview}}">
+      <text>{{username}}</text>
+    </view>
+    <button style="display:{{displaybtn}}" wx:if="{{canIUse}}" open-type="getUserInfo" bindgetuserinfo="bindGetUserInfo">授权登录</button>
+    <!-- 利用navigator跳转页面、不关闭当前页面 -->
+    <navigator url="../edit/edit?username={{username}}&userimg={{userimg}}&usersex={{usersex}}">
+      <view class="edit" style="display:{{displayview}}">
+        <image src="../../res/icon/edit.png"></image>
+      </view>
+    </navigator>
+  </view>
+  <!-- 列表选项部分 -->
+  <view class="list">
+    <view class="item" bindtap="tohistory">
+      <view class="record">
+        <image src="../../res/icon/record.png"></image>
+      </view>
+      <text>观看记录</text>
+      <view class="arrow">
+        <image src="../../res/icon/rightArrow.png"></image>
+      </view>
+    </view>
+
+    <view class="item" bindtap="tonote">
+      <view class="note">
+        <image src="../../res/icon/note.png"></image>
+      </view>
+      <text>我的笔记</text>
+      <view class="arrow">
+        <image src="../../res/icon/rightArrow.png"></image>
+      </view>
+    </view>
+
+    <!-- 利用navigator跳转页面、不关闭当前页面 -->
+    <navigator url="../question/question">
+      <view class="item">
+        <view class="help">
+          <image src="../../res/icon/help.png"></image>
+        </view>
+        <text>常见问题</text>
+        <view class="arrow">
+          <image src="../../res/icon/rightArrow.png"></image>
+        </view>
+      </view>
+    </navigator>
+
+    <view class="item">
+      <view class="feedback">
+        <image src="../../res/icon/feedback.png"></image>
+      </view>
+      <button open-type="feedback" hover-class="none">意见反馈</button>
+      <view class="arrow">
+        <image src="../../res/icon/rightArrow.png"></image>
+      </view>
+    </view>
+
+    <!-- 利用navigator跳转页面、不关闭当前页面 -->
+    <navigator url="../about/about">
+      <view class="item">
+        <view class="state">
+          <image src="../../res/icon/state.png"></image>
+        </view>
+        <text>关于我们</text>
+        <view class="arrow">
+          <image src="../../res/icon/rightArrow.png"></image>
+        </view>
+      </view>
+    </navigator>
+  </view>
+</view>
+
+
+<dialog title="友情提示" show="{{loginshow}}" bindbuttontap="tapdialog" buttons="{{btn}}">
+  <view>您未登录，请授权登录</view>
+</dialog>

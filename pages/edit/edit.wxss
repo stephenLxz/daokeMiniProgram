@@ -1,0 +1,84 @@
+page {
+  background-color: #fff;
+}
+
+/* 顶部头像部分 */
+
+.bg-top {
+  width: 100%;
+  height: 480rpx;
+  background-color: #1296db;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.bg-top image {
+  width: 180rpx;
+  height: 180rpx;
+  border-radius: 90rpx;
+  box-shadow: 0 0 0 5rpx #f0f0f0;
+}
+
+.bg-top text {
+  color: #fff;
+  font-size: 42rpx;
+  margin-top: 60rpx;
+}
+
+/* 资料详细展示部分 */
+
+.user-name, .user-sex, .user-school {
+  display: flex;
+  align-items: center;
+  padding: 24rpx 30rpx;
+}
+
+.user-intro {
+  display: flex;
+  align-items: flex-start;
+  padding: 24rpx 30rpx;
+}
+
+/* 清除浮动 */
+
+.user-intro:after {
+  content: "";
+  display: block;
+  height: 0;
+  clear: both;
+  visibility: hidden;
+}
+
+.user-intro text {
+  display: block;
+  float: left;
+}
+
+.user-intro textarea {
+  height: 150rpx;
+  float: left;
+  text-align: justify;
+}
+
+.user-name input, .user-school input, .user-intro textarea {
+  width: 80%;
+  font-size: 34rpx;
+}
+
+.user-sex picker {
+  width: 80%;
+}
+
+.placeclass {
+  color: #a5a5a5;
+  font-size: 34rpx;
+}
+
+.btn-save {
+  margin-top: 80rpx;
+  border-radius: 20rpx;
+  color: #fff;
+  background-color: #1296db;
+}

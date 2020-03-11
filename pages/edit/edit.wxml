@@ -1,0 +1,29 @@
+<view class="container">
+  <!-- 头像、昵称展示 -->
+  <view class="bg-top">
+    <image src="{{userimg}}"></image>
+    <text>{{username}}</text>
+  </view>
+  <!-- 资料详细展示 -->
+  <view class="user-data">
+    <view class="user-name">
+      <text>昵称：</text>
+      <input placeholder="请输入您的昵称(不超过10个字)" placeholder-class="placeclass" value="{{username}}" bindinput="nameinput"></input>
+    </view>
+    <view class="user-sex">
+      <text>性别：</text>
+      <picker range="{{sex}}" bindchange="sexpicker">
+        {{sex[usersex]}}
+      </picker>
+    </view>
+    <view class="user-school">
+      <text>学校：</text>
+      <input placeholder="编辑您毕业的学校" placeholder-class="placeclass" bindinput="schoolinput" value="{{schoolmsg}}"></input>
+    </view>
+    <view class="user-intro">
+      <text>简介：</text>
+      <textarea placeholder="这个人很懒，什么也没留下" placeholder-class="placeclass" bindinput="introinput" value="{{introduce}}"></textarea>
+    </view>
+  </view>
+  <button class="btn-save" bindtap="save">保存</button>
+</view>

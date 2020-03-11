@@ -1,0 +1,38 @@
+<view class="container">
+  <view class="box"></view>
+  <view class="itme">
+    <view class="item-title">
+      <text>如何修改昵称、性别等个人信息</text>
+      <image src="../../res/icon/downArrow.png" />
+    </view>
+    <view class="item-content">点击“用户”跳转到个人中心，点击头像、昵称栏右边的编辑图标，跳转进入编辑页面，对个人信息进行修改。</view>
+  </view>
+  <view class="itme">
+    <view class="item-title">
+      <text>视频有播放卡顿、无法播放的问题</text>
+      <image src="../../res/icon/downArrow.png" />
+    </view>
+    <view class="item-content">检查网络是否正常连接、对网络进行测速或者清除缓存后再次访问道客学堂。若还是存在问题，请联系客服微信：lxz1252991254.</view>
+  </view>
+  <view class="itme">
+    <view class="item-title">
+      <text>收藏的课程不在收藏页面</text>
+      <image src="../../res/icon/downArrow.png" />
+    </view>
+    <view class="item-content">请您查看一下您的登录信息，确认是否对该课程进行收藏，只有对该课程进行了收藏的账号才能在我的收藏中查看到已经收藏的课程。</view>
+  </view>
+  <view class="itme">
+    <view class="item-title">
+      <text>小程序用户交流群</text>
+      <image src="../../res/icon/downArrow.png" />
+    </view>
+    <view class="item-content">你好，感谢您的使用，如果您有任何使用上的不方便与好的建议，都欢迎您加入“道客学堂 微信小程序用户交流群”，我们一起打造一款良好的移动学习平台，期待您的加入！QQ群号：1071662773.</view>
+  </view>
+  <view class="itme">
+    <view class="item-title">
+      <text>免责声明</text>
+      <image src="../../res/icon/downArrow.png" />
+    </view>
+    <view class="item-content">道客学堂（daoke school）刊载的所有内容，包括文字、图片、音频、视频以及小程序版式设计等均在网上搜集。道客学堂提供的内容仅用于个人学习、研究或欣赏。我们不保证内容的正确性。通过使用本小程序内容随之而来的风险与本小程序无关。本小程序内容原作者如不愿意在本网站刊登内容，请及时通知本小程序，予以删除。除此之外，免责声明的解释权归道客学堂所有。</view>
+  </view>
+</view>

@@ -1,0 +1,38 @@
+<!--pages/note/note.wxml-->
+<view class="container">
+  <view class="write">
+    <view class="write-title">
+      <text>标题</text>
+      <input placeholder="点击输入标题" confirm-type="done" value="{{titlevalue}}" bindinput="titleinput"></input>
+    </view>
+    <textarea class="textareaStyle" value="{{textvalue}}" bindinput="textinput" placeholder-class="textareaPla" placeholder="在此输入您要记录的内容~">
+    </textarea>
+    <button class="btn-write" bindtap="record">记录</button>
+  </view>
+  <view class="show">
+    <view class="show-title"> ———— 笔记大全 ————</view>
+    <view class="show-content" wx:for="{{num}}" wx:key="*this">
+      <view class="content-title" data-index="{{index}}">
+        {{titles[index]}}
+        <image src="../../res/icon/delete.png" data-index="{{index}}" bindtap="deletenote"></image>
+      </view>
+      <view class="contents" data-index="{{index}}" bindtap="shownote">{{texts[index]}}</view>
+    </view>
+  </view>
+</view>
+
+<!--dialog窗口-->
+<dialog title="友情提示" show="{{contentshow}}" bindbuttontap="tapdialog" buttons="{{btn}}">
+  <view>标题或内容为空，请输入相应内容</view>
+</dialog>
+<dialog title="{{titles[nums]}}" show="{{noteshow}}" bindbuttontap="tapdialog" buttons="{{btn}}">
+  <view>
+    {{texts[nums]}}
+  </view>
+</dialog>
+<dialog title="友情提示" show="{{numshow}}" bindbuttontap="tapdialog" buttons="{{btn}}">
+  <view>记录的内容数量达到上限</view>
+</dialog>
+<dialog title="友情提示" show="{{warnshow}}" bindbuttontap="deletedialog" buttons="{{choose}}">
+  <view>是否要删除该笔记</view>
+</dialog>

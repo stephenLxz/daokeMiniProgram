@@ -1,0 +1,99 @@
+<view class="container">
+  <!-- 搜索条框 -->
+  <view class="search">
+    <view class="icon-sousuo"></view>
+    <input placeholder="搜索课程" placeholder-class="search-text" class="search-bar"></input>
+  </view>
+  <!-- 轮播图 -->
+  <view class="carousel">
+    <swiper class="carousel-swiper" indicator-dots="{{indicatorDots}}" indicator-color="rgba(0,0,0,1)" indicator-active-color="#ffffff" autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}" vertical="{{vertical}}" circular="{{circular}}">
+      <block wx:for="{{imgurl}}" wx:key="*this">
+        <swiper-item>
+          <image src="{{item}}" class="swiper-image" data-flag="{{imgflag[index]}}" bindtap="tovideo" />
+        </swiper-item>
+      </block>
+    </swiper>
+  </view>
+  <!-- 导航 -->
+
+  <view class="navigator">
+
+    <view class="navigator-item" bindtap="tovideo" data-flag="html">
+      <!-- 使用navigator传递参数 -->
+      <view class="item">
+        <image src="../../res/images/h.png" />
+      </view>
+      <text>Html</text>
+    </view>
+
+    <view class="navigator-item" bindtap="tovideo" data-flag="css">
+      <view class="item">
+        <image src="../../res/images/c.png" />
+      </view>
+      <text>Css</text>
+    </view>
+    <view class="navigator-item" bindtap="tovideo" data-flag="javascript">
+      <view class="item">
+        <image src="../../res/images/js.png" />
+      </view>
+      <text>JavaScript</text>
+    </view>
+    <view class="navigator-item" bindtap="tovideo" data-flag="jquery">
+      <view class="item">
+        <image src="../../res/images/jq.png" />
+      </view>
+      <text>JQuery</text>
+    </view>
+    <view class="navigator-item" bindtap="tovideo" data-flag="node">
+      <view class="item">
+        <image src="../../res/images/n.png" />
+      </view>
+      <text>Node.js</text>
+    </view>
+    <view class="navigator-item" bindtap="tovideo" data-flag="gulp">
+      <view class="item">
+        <image src="../../res/images/g.png" />
+      </view>
+      <text>Gulp</text>
+    </view>
+    <view class="navigator-item" bindtap="tovideo" data-flag="mongo">
+      <view class="item">
+        <image src="../../res/images/m.png" />
+      </view>
+      <text>MongoDB</text>
+    </view>
+    <view class="navigator-item" bindtap="tovideo" data-flag="express">
+      <view class="item">
+        <image src="../../res/images/e.png" />
+      </view>
+      <text>Express</text>
+    </view>
+  </view>
+  <!-- 专题部分 -->
+  <view class="topic">
+    <view class="topic-text">
+      <text>专题</text>
+    </view>
+    <view class="topic-pic">
+      <view class="topic-image">
+        <image src="../../res/images/topic1.jpg" />
+      </view>
+      <view class="topic-image">
+        <image src="../../res/images/topic2.jpg" />
+      </view>
+      <view class="topic-image">
+        <image src="../../res/images/topic3.jpg" />
+      </view>
+      <view class="topic-image">
+        <image src="../../res/images/topic4.jpg" />
+      </view>
+      <view class="topic-image">
+        <image src="../../res/images/topic5.jpg" />
+      </view>
+    </view>
+  </view>
+</view>
+
+<dialog title="友情提示" show="{{loginshow}}" bindbuttontap="tapdialog" buttons="{{btn}}">
+  <view>您未登录，请授权登录</view>
+</dialog>

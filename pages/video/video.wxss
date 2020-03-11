@@ -1,0 +1,139 @@
+/* 照片、视频部分 */
+
+.pic-video {
+  width: 100% !important;
+  height: 420rpx;
+}
+
+.pic-video image {
+  width: 100%;
+  height: 100%;
+}
+
+.pic-video video {
+  width: 100%;
+  height: 420rpx;
+}
+
+/* 简介,目录部分 */
+
+.title-bar {
+  width: 100%;
+  height: 100rpx;
+  border-bottom: 1rpx solid #a0a0a0;
+  font-weight: bold;
+  background-color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+
+/* 被选中时候的类 */
+
+.selected {
+  line-height: 100rpx;
+  display: block;
+  height: 100rpx;
+  color: #1296db;
+  box-sizing: border-box;
+  border-bottom: 5rpx solid #1296db;
+}
+
+/* 简介内容 */
+
+.content {
+  width: 100% !important;
+  margin: 0;
+  padding: 0;
+}
+
+.content .title {
+  box-sizing: border-box;
+  width: 100%;
+  height: 100rpx;
+  padding-left: 50rpx;
+  background-color: #fff;
+  display: flex;
+  align-items: center;
+  position: relative;
+}
+
+.content .title text {
+  font-size: 42rpx;
+}
+
+.content .title button {
+  position: absolute;
+  right: 50rpx;
+  text-align: center;
+  line-height: 60rpx;
+  margin: 0;
+  padding: 0;
+  border-radius: 10rpx;
+  font-size: 30rpx;
+  font-weight: normal;
+  width: 100rpx;
+  height: 60rpx;
+  color: #fff;
+  background-color: #1296db;
+}
+
+.content .intro {
+  box-sizing: border-box;
+  padding: 0 30rpx 30rpx 30rpx;
+  margin-top: 20rpx;
+  width: 100%;
+  background-color: #fff;
+}
+
+.content .intro .intro-title {
+  display: block;
+  padding-top: 30rpx;
+  padding-bottom: 20rpx;
+}
+
+.content .intro text:nth-child(2n) {
+  line-height: 54rpx;
+  text-align: justify;
+  font-size: 32rpx;
+  color: #999;
+  display: inline-block;
+}
+
+/* 目录内容 */
+
+.catalog {
+  width: 100% !important;
+  margin: 0;
+  padding: 0;
+}
+
+.catalog .item {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  border-bottom: 1rpx solid #eee;
+  width: 100%;
+  height: 100rpx;
+  background-color: #fff;
+  display: flex;
+  align-items: center;
+}
+
+.catalog .item image {
+  width: 50rpx;
+  height: 50rpx;
+  padding-left: 30rpx;
+}
+
+.catalog .item text {
+  padding-left: 30rpx;
+  padding-right: 30rpx;
+  overflow: hidden;
+}
+
+/* 目录处于选中的样式 */
+
+.textSelected {
+  color: #1296db;
+}

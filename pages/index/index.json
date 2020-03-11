@@ -1,0 +1,6 @@
+{
+  "navigationBarTitleText": "道客学堂",
+  "usingComponents": {
+    "dialog": "/components/dialog/dialog"
+  }
+}

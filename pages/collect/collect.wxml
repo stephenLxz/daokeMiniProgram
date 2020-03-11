@@ -1,0 +1,28 @@
+<view class="container">
+  <!-- 空盒子 -->
+  <view class="box"></view>
+  <!-- 课程部分 -->
+  <view class="course" wx:for="{{collects}}" wx:key="*this" data-flag="{{item}}" bindtap="tovideo">
+    <view class="course-pic">
+      <image src="{{'../../res/images/' + item + '.png'}}" />
+    </view>
+    <view class="course-item">
+      <view class="course-title">
+        <text>{{collectTitles[index]}}</text>
+      </view>
+      <view class="course-bar">
+        <progress font-size="12" percent="{{progress[item]}}" stroke-width="5" show-info/>
+      </view>
+    </view>
+  </view>
+  <!-- 当未登录或者没有收藏时的提醒 -->
+  <view class="notice" style="display:{{noticeshow}}">
+    <image src="../../res/icon/notice.png"></image>
+    <text>{{noticecontent}}</text>
+  </view>
+</view>
+
+
+<dialog title="友情提示" show="{{loginshow}}" bindbuttontap="tapdialog" buttons="{{btn}}">
+  <view>您未登录，请授权登录</view>
+</dialog>

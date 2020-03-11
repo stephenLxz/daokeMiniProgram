@@ -1,0 +1,44 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/collect/collect",
+    "pages/user/user",
+    "pages/about/about",
+    "pages/question/question",
+    "pages/note/note",
+    "pages/edit/edit",
+    "pages/history/history",
+    "pages/video/video"
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTextStyle": "black"
+  },
+  "style": "v2",
+  "sitemapLocation": "sitemap.json",
+  "tabBar": {
+    "selectedColor": "#1296db",
+    "position": "bottom",
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "iconPath": "res/icon/index.png",
+        "selectedIconPath": "res/icon/index_select.png",
+        "text": "首页"
+      },
+      {
+        "pagePath": "pages/collect/collect",
+        "iconPath": "res/icon/collect.png",
+        "selectedIconPath": "res/icon/collect_select.png",
+        "text": "收藏"
+      },
+      {
+        "pagePath": "pages/user/user",
+        "iconPath": "res/icon/user.png",
+        "selectedIconPath": "res/icon/user_select.png",
+        "text": "用户"
+      }
+    ]
+  }
+}

@@ -1,0 +1,12 @@
+<view class="container">
+  <view class="box">
+    <view class="watchBox" wx:for="{{history}}" wx:key="*this" data-flag="{{item}}" bindtap="tovideo">
+      <image src="{{'../../res/images/' + item + '.png'}}"></image>
+      <text>{{historyTitle[index]}}</text>
+    </view>
+  </view>
+  <view class="notice" style="display:{{noticeshow}}">
+    <image src="../../res/icon/notice.png"></image>
+    <text>{{noticecontent}}</text>
+  </view>
+</view>
