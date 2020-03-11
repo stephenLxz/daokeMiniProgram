@@ -5,6 +5,19 @@ Page {
 .container {
   width: 100%;
   height: 100%;
+  position: relative;
+}
+
+/* 覆盖页面 */
+
+.loading {
+  width: 100vw;
+  height: 100vh;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 10000;
+  background-color: #fff;
 }
 
 /* 当未登录或者没有收藏时的提醒 */

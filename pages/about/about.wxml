@@ -8,4 +8,5 @@
     <view class="company">上海掌控设计科技工作室</view>
     <view class="version">版本号 1.0.0</view>
   </view>
+  <loading ext-class="loading" type="dot-gray" show="{{show}}">数据加载中</loading>
 </view>

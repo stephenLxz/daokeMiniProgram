@@ -33,6 +33,9 @@ Page({
     contentshow: 'none', // 用于前台数据的显示
     arr: [], // 用于存储满足条件的数据
     courses: ['html', 'css', 'javascript', 'jquery', 'node', 'gulp', 'mongo', 'express'], // 存储课程的集合
+
+    /** 数据加载的数据 */
+    show: true
   },
 
   /**
@@ -114,6 +117,14 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function() {
+    var that = this;
+    this.timer = setTimeout(() => {
+      that.setData({
+        show: false,
+      })
+      wx.showTabBar({})
+    }, 1000)
+
     // 将相关的数据初始化（dialog、搜索框的值）
     var initvalue = this.data.initvalue;
     this.setData({
@@ -127,7 +138,13 @@ Page({
    * 生命周期函数--监听页面隐藏
    */
   onHide: function() {
+    wx.hideTabBar({
 
+    })
+    this.setData({
+      show: true,
+    })
+    clearTimeout(this.timer);
   },
 
   /**

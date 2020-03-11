@@ -6,6 +6,7 @@ Page({
    * 页面的初始数据
    */
   data: {
+    show: true,
     /* dialog相关设置 */
     btn: [{
       text: '前往登录'
@@ -60,6 +61,12 @@ Page({
    */
   onShow: function() {
     var that = this;
+    this.timer = setTimeout(() => {
+      that.setData({
+        show: false,
+      })
+      wx.showTabBar({})
+    }, 1000)
     let collectname = getApp().globalData.openid + 'collect'; // 利用不同的openid将不同用户的数据存入不同的记录中
     let progressname = getApp().globalData.openid + 'progress'; // 利用不同的openid将不同用户的数据存入不同的记录中
     // 判断是否出现弹窗当没有登录的时候显示弹窗
@@ -108,7 +115,13 @@ Page({
    * 生命周期函数--监听页面隐藏
    */
   onHide: function() {
+    clearTimeout(this.timer);
+    this.setData({
+      show: true,
+    })
+    wx.hideTabBar({
 
+    })
   },
 
   /**

@@ -1,6 +1,8 @@
 //app.js
 App({
   onLaunch: function() {
+    // 隐藏tabbar
+    wx.hideTabBar({})
     // 调用云数据库
     wx.cloud.init({
       env: 'daoke-9xl4v',

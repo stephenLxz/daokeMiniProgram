@@ -7,6 +7,7 @@ Page({
    * 页面的初始数据
    */
   data: {
+    show: true,
     // 记录的相关数据
     titlevalue: "", // 用于初始化记录标题
     textvalue: "", // 用于初始化记录内容
@@ -220,6 +221,12 @@ Page({
    */
   onShow: function() {
     var that = this;
+    this.timer = setTimeout(() => {
+      that.setData({
+        show: false,
+      })
+      wx.showTabBar({})
+    }, 1000)
     let name = getApp().globalData.openid + 'noteInfo'; // 利用不同的openid将不同用户的数据存入不同的记录中
     db.collection('user').doc(name).get({
       success: function(res) {
@@ -237,7 +244,10 @@ Page({
    * 生命周期函数--监听页面隐藏
    */
   onHide: function() {
-
+    clearTimeout(this.timer);
+    this.setData({
+      show: true,
+    })
   },
 
   /**

@@ -40,5 +40,8 @@
         "text": "用户"
       }
     ]
+  },
+  "usingComponents": {
+    "loading": "/components/loading/loading"
   }
 }

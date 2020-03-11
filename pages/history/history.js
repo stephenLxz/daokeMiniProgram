@@ -5,6 +5,7 @@ Page({
    * 页面的初始数据
    */
   data: {
+    show: true,
     history: [], // 存储播放课程的标识
     historyTitle: [], // 存储播放课程的标识
     noticeshow: 'flex', // 显示页面的提醒
@@ -40,6 +41,12 @@ Page({
    */
   onShow: function() {
     var that = this;
+    this.timer = setTimeout(() => {
+      that.setData({
+        show: false,
+      })
+      wx.showTabBar({})
+    }, 800)
     let name = getApp().globalData.openid + 'history';
     db.collection('user').doc(name).get({
       success: function(res) {
@@ -59,7 +66,10 @@ Page({
    * 生命周期函数--监听页面隐藏
    */
   onHide: function() {
-
+    clearTimeout(this.timer);
+    this.setData({
+      show: true,
+    })
   },
 
   /**

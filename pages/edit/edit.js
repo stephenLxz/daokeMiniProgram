@@ -7,6 +7,7 @@ Page({
    * 页面的初始数据
    */
   data: {
+    show: true,
     username: "", // 昵称
     userimg: "", // 头像
     usersex: "", // 性别 (0,1,2) 可作为选择器的索引
@@ -131,6 +132,12 @@ Page({
    */
   onShow: function() {
     var that = this;
+    this.timer = setTimeout(() => {
+      that.setData({
+        show: false,
+      })
+      wx.showTabBar({})
+    }, 1000)
     let name = getApp().globalData.openid + 'userInfo';
     db.collection('user').doc(name).get({
       success: function(res) {
@@ -150,7 +157,10 @@ Page({
    * 生命周期函数--监听页面隐藏
    */
   onHide: function() {
-
+    clearTimeout(this.timer);
+    this.setData({
+      show: true,
+    })
   },
 
   /**

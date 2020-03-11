@@ -6,6 +6,8 @@ Page({
    * 页面的初始数据
    */
   data: {
+    show: true,
+    
     picshow: 'inherit', // 是否显示封面图片
     videoshow: 'none', // 是否显示视频界面
     content: 'none', // 是否显示简介内容
@@ -261,6 +263,12 @@ Page({
    */
   onShow: function() {
     var that = this;
+    this.timer = setTimeout(() => {
+      that.setData({
+        show: false,
+      })
+      wx.showTabBar({})
+    }, 1200)
     var id = this.data.id;
     let collectname = getApp().globalData.openid + 'collect'; // 利用不同的openid将不同用户的数据存入不同的记录中
     let progressname = getApp().globalData.openid + 'progress'; // 利用不同的openid将不同用户的数据存入不同的记录中
@@ -311,7 +319,10 @@ Page({
    * 生命周期函数--监听页面隐藏
    */
   onHide: function() {
-
+    clearTimeout(this.timer);
+    this.setData({
+      show: true,
+    })
   },
 
   /**

@@ -7,6 +7,7 @@ Page({
    * 页面的初始数据
    */
   data: {
+    show: true,
     canIUse: wx.canIUse('button.open-type.getUserInfo'),
     displaybtn: '', // 是否展示授权按钮
     displayview: '', // 显示个人信息
@@ -114,6 +115,12 @@ Page({
    */
   onShow: function() {
     var that = this;
+    this.timer = setTimeout(() => {
+      that.setData({
+        show: false,
+      })
+      wx.showTabBar({})
+    }, 1000)
     let name = getApp().globalData.openid + 'userInfo';
     db.collection('user').doc(name).get({
       success: function(res) {
@@ -130,7 +137,13 @@ Page({
    * 生命周期函数--监听页面隐藏
    */
   onHide: function() {
+    clearTimeout(this.timer)
+    wx.hideTabBar({
 
+    })
+    this.setData({
+      show: true,
+    })
   },
 
   /**

@@ -74,6 +74,7 @@
     </navigator>
   </view>
 </view>
+<loading ext-class="loading" type="dot-gray" show="{{show}}">数据加载中</loading>
 
 
 <dialog title="友情提示" show="{{loginshow}}" bindbuttontap="tapdialog" buttons="{{btn}}">

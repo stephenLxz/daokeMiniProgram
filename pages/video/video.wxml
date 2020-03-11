@@ -30,3 +30,4 @@
     </view>
   </view>
 </view>
+<loading ext-class="loading" type="dot-gray" show="{{show}}">数据加载中</loading>

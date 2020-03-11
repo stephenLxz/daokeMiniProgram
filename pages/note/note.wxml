@@ -20,6 +20,8 @@
     </view>
   </view>
 </view>
+<loading ext-class="loading" type="dot-gray" show="{{show}}">数据加载中</loading>
+
 
 <!--dialog窗口-->
 <dialog title="友情提示" show="{{contentshow}}" bindbuttontap="tapdialog" buttons="{{btn}}">
