@@ -267,7 +267,6 @@ Page({
       that.setData({
         show: false,
       })
-      wx.showTabBar({})
     }, 1200)
     var id = this.data.id;
     let collectname = getApp().globalData.openid + 'collect'; // 利用不同的openid将不同用户的数据存入不同的记录中

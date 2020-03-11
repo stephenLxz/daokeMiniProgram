@@ -45,7 +45,6 @@ Page({
       that.setData({
         show: false,
       })
-      wx.showTabBar({})
     }, 800)
     let name = getApp().globalData.openid + 'history';
     db.collection('user').doc(name).get({

@@ -31,7 +31,6 @@ Page({
       that.setData({
         show: false,
       })
-      wx.showTabBar({})
     }, 500)
   },
 

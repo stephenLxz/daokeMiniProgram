@@ -12,6 +12,14 @@ Page({
       text: '前往登录'
     }], // 弹出窗口按钮选项
     loginshow: false,
+    delbtn: [{
+      text: '取消'
+    }, {
+      text: '确认'
+    }],
+    delshow: false,
+    delflag: false,
+    index: '', // 存储被长按选项的索引
 
     /* 被收藏课程的相关数据 */
     collects: [], // 接收所有被收藏的课程的标识
@@ -19,6 +27,56 @@ Page({
     progress: {}, // 用于存储所有课程的进度条
     noticeshow: 'flex', // 显示页面的提醒
     noticecontent: '您好，您未登录，请前往用户界面进行登录！', // 页面提醒的内容
+  },
+
+  /**
+   * 长按显示是否取消收藏
+   */
+  deleteCollect: function(e) {
+    var index = e.currentTarget.dataset.index;
+    this.setData({
+      delshow: true,
+      index: index,
+    })
+  },
+
+  /**
+   * 确认取消收藏
+   */
+  del: function(e) {
+    var delflag = this.data.delflag;
+    if (delflag) {
+      // 获取要处理的数据
+      var collects = this.data.collects;
+      var collectTitles = this.data.collectTitles;
+      var progress = this.data.progress;
+      var index = this.data.index;
+      // 数据库中的记录名称
+      let collectname = getApp().globalData.openid + 'collect';
+      let progressname = getApp().globalData.openid + 'progress';
+      collects.splice(index, 1);
+      collectTitles.splice(index, 1);
+      delete progress[collects[index]]
+      this.setData({
+        collects: collects,
+        collectTitles: collectTitles,
+        progress: progress,
+        delflag: false,
+      })
+
+      // 将数据更新到数据库中
+      db.collection('user').doc(collectname).update({
+        data: {
+          collects: collects,
+          collectTitles: collectTitles,
+        }
+      })
+      db.collection('user').doc(progressname).update({
+        data: {
+          progress: progress,
+        }
+      })
+    }
   },
 
   /**
@@ -40,6 +98,20 @@ Page({
         url: '/pages/user/user',
       })
     }
+  },
+
+  deldialog: function(e) {
+    // 当点击的是‘确认’的时候触发
+    if (e.detail.index == 1) {
+      this.setData({
+        delflag: true,
+      })
+      // 确认取消收藏
+      this.del();
+    }
+    this.setData({
+      delshow: false,
+    })
   },
 
   /**

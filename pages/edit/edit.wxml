@@ -27,4 +27,4 @@
   </view>
   <button class="btn-save" bindtap="save">保存</button>
 </view>
-<loading ext-class="loading" type="dot-gray" show="{{show}}">数据加载中</loading>
+<loading ext-class="loading" type="dot-gray" show="{{show}}"></loading>

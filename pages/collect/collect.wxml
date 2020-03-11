@@ -2,7 +2,7 @@
   <!-- 空盒子 -->
   <view class="box"></view>
   <!-- 课程部分 -->
-  <view class="course" wx:for="{{collects}}" wx:key="*this" data-flag="{{item}}" bindtap="tovideo">
+  <view class="course" wx:for="{{collects}}" wx:key="*this" data-flag="{{item}}" bindtap="tovideo" data-index="{{index}}" bindlongpress="deleteCollect">
     <view class="course-pic">
       <image src="{{'../../res/images/' + item + '.png'}}" />
     </view>
@@ -21,9 +21,11 @@
     <text>{{noticecontent}}</text>
   </view>
 </view>
-<loading ext-class="loading" type="dot-gray" show="{{show}}">数据加载中</loading>
+<loading ext-class="loading" type="dot-gray" show="{{show}}"></loading>
 
-
+<dialog title="友情提示" show="{{delshow}}" bindbuttontap="deldialog" buttons="{{delbtn}}">
+  <view>请您确认是否取消收藏</view>
+</dialog>
 
 <dialog title="友情提示" show="{{loginshow}}" bindbuttontap="tapdialog" buttons="{{btn}}">
   <view>您未登录，请授权登录</view>

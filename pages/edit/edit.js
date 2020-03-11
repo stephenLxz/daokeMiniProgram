@@ -136,7 +136,6 @@ Page({
       that.setData({
         show: false,
       })
-      wx.showTabBar({})
     }, 1000)
     let name = getApp().globalData.openid + 'userInfo';
     db.collection('user').doc(name).get({

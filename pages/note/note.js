@@ -225,7 +225,6 @@ Page({
       that.setData({
         show: false,
       })
-      wx.showTabBar({})
     }, 1000)
     let name = getApp().globalData.openid + 'noteInfo'; // 利用不同的openid将不同用户的数据存入不同的记录中
     db.collection('user').doc(name).get({
