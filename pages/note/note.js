@@ -8,6 +8,7 @@ Page({
    */
   data: {
     show: true,
+    textarea: 'none',
     // 记录的相关数据
     titlevalue: "", // 用于初始化记录标题
     textvalue: "", // 用于初始化记录内容
@@ -224,6 +225,7 @@ Page({
     this.timer = setTimeout(() => {
       that.setData({
         show: false,
+        textarea: 'flex',
       })
     }, 1000)
     let name = getApp().globalData.openid + 'noteInfo'; // 利用不同的openid将不同用户的数据存入不同的记录中
@@ -246,6 +248,7 @@ Page({
     clearTimeout(this.timer);
     this.setData({
       show: true,
+      textarea: 'none',
     })
   },
 

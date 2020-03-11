@@ -8,6 +8,7 @@ Page({
    */
   data: {
     show: true,
+    textarea: 'none', // 用来解决textarea层级过高
     username: "", // 昵称
     userimg: "", // 头像
     usersex: "", // 性别 (0,1,2) 可作为选择器的索引
@@ -135,6 +136,7 @@ Page({
     this.timer = setTimeout(() => {
       that.setData({
         show: false,
+        textarea: 'block',
       })
     }, 1000)
     let name = getApp().globalData.openid + 'userInfo';
@@ -159,6 +161,7 @@ Page({
     clearTimeout(this.timer);
     this.setData({
       show: true,
+      textarea: 'none',
     })
   },
 

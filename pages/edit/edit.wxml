@@ -20,7 +20,7 @@
       <text>学校：</text>
       <input placeholder="编辑您毕业的学校" placeholder-class="placeclass" bindinput="schoolinput" value="{{schoolmsg}}"></input>
     </view>
-    <view class="user-intro">
+    <view class="user-intro" style="display:{{textarea}}">
       <text>简介：</text>
       <textarea placeholder="这个人很懒，什么也没留下" placeholder-class="placeclass" bindinput="introinput" value="{{introduce}}"></textarea>
     </view>

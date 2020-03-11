@@ -1,6 +1,6 @@
 <!--pages/note/note.wxml-->
 <view class="container">
-  <view class="write">
+  <view class="write" style="display:{{textarea}}">
     <view class="write-title">
       <text>标题</text>
       <input placeholder="点击输入标题" confirm-type="done" value="{{titlevalue}}" bindinput="titleinput"></input>
