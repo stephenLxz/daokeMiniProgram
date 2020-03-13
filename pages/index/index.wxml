@@ -1,4 +1,4 @@
-<view class="container">
+<view class="container" style="display:{{container}}">
   <!-- 搜索条框 -->
   <view class="search">
     <view class="icon-sousuo"></view>

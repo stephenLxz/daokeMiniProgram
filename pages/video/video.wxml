@@ -6,6 +6,7 @@
   <view class="title-bar">
     <text class="{{state === 0 ? 'selected' : ''}}" bindtap="contentshow">简介</text>
     <text class="{{state === 1 ? 'selected' : ''}}" bindtap="catalogshow">目录</text>
+    <text class="{{state === 2 ? 'selected' : ''}}" bindtap="commentshow">评论</text>
   </view>
 
   <!-- 简介内容 -->
@@ -29,5 +30,31 @@
       <text class="{{selectIndex === index ? 'textSelected' : ''}}">{{item}}</text>
     </view>
   </view>
+
+  <!-- 评论内容  -->
+  <view class="comment" style="display: {{comment}}">
+    <view class="comment-top">
+      <input placeholder="在此输入评论内容" bindinput="commentInput" value="{{initValue}}"></input>
+      <button bindtap="submit">评论</button>
+    </view>
+    <view class="comment-show">
+      <text class="comment-show-title">———— 用户评论 ————</text>
+      <view class="comment-item" wx:for="{{allimg}}" wx:key="*this">
+        <image src="{{item}}"></image>
+        <view class="comment-item-word">
+          <view class="comment-item-name">
+            <text>{{allname[index]}}</text>
+          </view>
+          <text>{{allcomment[index]}}</text>
+          <view class="comment-date">{{alldate[index]}}</view>
+        </view>
+      </view>
+      <view class="comment-notice" style="display:{{notice}}">
+        <image src="../../res/icon/notice.png"></image>
+        <text>暂无评论</text>
+      </view>
+    </view>
+  </view>
 </view>
+
 <loading ext-class="loading" type="dot-gray" show="{{show}}"></loading>

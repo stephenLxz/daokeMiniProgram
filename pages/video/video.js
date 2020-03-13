@@ -1,5 +1,6 @@
 // pages/video/video.js
 const db = wx.cloud.database();
+const util = require('../../utils/util.js');
 Page({
 
   /**
@@ -7,11 +8,12 @@ Page({
    */
   data: {
     show: true,
-    
+
     picshow: 'inherit', // 是否显示封面图片
     videoshow: 'none', // 是否显示视频界面
     content: 'none', // 是否显示简介内容
-    catalog: 'inherit', // 是否显示目录内容
+    catalog: 'inherit', // 是否显示目录内容 inherit
+    comment: 'none', // 是否显示评论内容
     state: 1, // 用于区别简介与目录的选中状态
     selectIndex: '', // 判断哪个目录处于选中状态
     indexSrc: '../../res/images/css.png', // 前台图片的src
@@ -28,6 +30,8 @@ Page({
     videoSrc: [], // 视频的src
     watchedNum: [], // 数组的长度代表已经观看的数量
     watchedObj: {}, // 存储所有的观看数据
+    username: '', // 用户的用户名
+    userimg: '', // 用户的头像
 
     /** 收藏页面用到的数据 */
     collects: [], // 用来存储被收藏的视频的标识
@@ -42,6 +46,90 @@ Page({
     collectflag: false,
     progressflag: false,
     historyflag: false,
+    commentflag: '', // 用于标识某用户是否在该课程评论过
+
+    /** 评论区域用到的参数 */
+    notice: 'flex',
+    commentInputValue: '',
+    initValue: '',
+    date: '',
+
+    /** 存储从数据库中查询出来的 */
+    allname: [],
+    allimg: [],
+    allcomment: [],
+    alldate: [],
+  },
+
+  /**
+   * 点击评论按钮触发
+   */
+  submit: function(e) {
+    clearTimeout(this.timeout);
+    var that = this;
+    var id = this.data.id;
+    var commentInputValue = this.data.commentInputValue;
+    var username = this.data.username;
+    var userimg = this.data.userimg;
+    var date = this.data.date;
+    var commentflag = this.data.commentflag;
+    var allname = [];
+    var allimg = [];
+    var allcomment = [];
+    var alldate = [];
+    // 当评论内容不为空时
+    if (commentInputValue.trim().length != 0) {
+      // 将数据存进数据库
+      db.collection('comment').add({
+        data: {
+          username: username,
+          userimg: userimg,
+          commentInputValue: commentInputValue,
+          date: util.formatDate(new Date()),
+          commentflag: id
+        }
+      })
+      // 通过不同的标识在数据库中查询出不同课程的所有评论
+      this.timeout = setTimeout(function() {
+        db.collection('comment').where({
+          commentflag: id
+        }).get({
+          success: function(res) {
+            res.data.forEach(function(item) {
+              for (var i in item) {
+                if (i == 'commentInputValue') {
+                  allcomment.unshift(item[i])
+                } else if (i == 'date') {
+                  alldate.unshift(item[i])
+                } else if (i == 'username') {
+                  allname.unshift(item[i])
+                } else if (i == 'userimg') {
+                  allimg.unshift(item[i])
+                }
+                that.setData({
+                  allcomment: allcomment,
+                  alldate: alldate,
+                  allname: allname,
+                  allimg: allimg,
+                  commentInputValue: '',
+                  initValue: '', // 初始化输入框
+                  notice: 'none', // 隐藏提醒内容
+                })
+              }
+            })
+          }
+        })
+      }, 100)
+    }
+  },
+
+  /**
+   * 评论框中输入内容时触发
+   */
+  commentInput: function(e) {
+    this.setData({
+      commentInputValue: e.detail.value
+    })
   },
 
   /**
@@ -67,7 +155,7 @@ Page({
     this.setData({
       history: history,
       historyTitle: historyTitle,
-    })
+    });
     // 将数据存入数据库中
     if (historyflag) {
       db.collection('user').doc(historyname).update({
@@ -196,24 +284,38 @@ Page({
   },
 
   /**
-   * 处理点击简介
+   * 处理跳转简介
    */
   contentshow: function(e) {
     this.setData({
       content: 'inherit',
       catalog: 'none',
+      comment: 'none',
       state: 0,
     })
   },
 
   /**
-   * 处理点击目录按钮
+   * 处理跳转目录
    */
   catalogshow: function(e) {
     this.setData({
       content: 'none',
       catalog: 'inherit',
+      comment: 'none',
       state: 1,
+    })
+  },
+
+  /**
+   * 处理跳转评论
+   */
+  commentshow: function(e) {
+    this.setData({
+      content: 'none',
+      catalog: 'none',
+      comment: 'block',
+      state: 2,
     })
   },
 
@@ -231,6 +333,14 @@ Page({
     indexSrc = '../../res/images/' + id + '.png';
     this.setData({
       indexSrc: indexSrc,
+    })
+    // 获取用户头像
+    wx.getUserInfo({
+      success: function(res) {
+        that.setData({
+          userimg: res.userInfo.avatarUrl,
+        })
+      }
     })
     db.collection('videoInfo').doc(id).get({
       success: function(res) {
@@ -267,11 +377,12 @@ Page({
       that.setData({
         show: false,
       })
-    }, 1200)
+    }, 2000)
     var id = this.data.id;
     let collectname = getApp().globalData.openid + 'collect'; // 利用不同的openid将不同用户的数据存入不同的记录中
     let progressname = getApp().globalData.openid + 'progress'; // 利用不同的openid将不同用户的数据存入不同的记录中
     let historyname = getApp().globalData.openid + 'history'; // 利用不同的openid将不同用户的数据存入不同的记录中
+    let username = getApp().globalData.openid + 'userInfo'; // 利用不同的openid将不同用户的数据存入不同的记录中
     db.collection('user').doc(collectname).get({
       success: function(res) {
         that.setData({
@@ -309,6 +420,59 @@ Page({
           history: res.data.history,
           historyTitle: res.data.historyTitle,
           historyflag: res.data.historyflag,
+        })
+      }
+    })
+
+    db.collection('user').doc(username).get({
+      success: function(res) {
+        that.setData({
+          username: res.data.username,
+        })
+      },
+      fail: function(res) {
+        wx.getUserInfo({
+          success: function(res) {
+            that.setData({
+              username: res.userInfo.nickName
+            })
+          }
+        })
+      }
+    })
+
+    var allname = [];
+    var allimg = [];
+    var allcomment = [];
+    var alldate = [];
+    // 通过不同的标识在数据库中查询出不同课程的所有评论
+    db.collection('comment').where({
+      commentflag: id
+    }).get({
+      success: function(res) {
+        res.data.forEach(function(item) {
+          for (var i in item) {
+            if (i == 'commentInputValue') {
+              allcomment.unshift(item[i])
+            } else if (i == 'date') {
+              alldate.unshift(item[i])
+            } else if (i == 'username') {
+              allname.unshift(item[i])
+            } else if (i == 'userimg') {
+              allimg.unshift(item[i])
+            }
+            if (allcomment.length != 0) {
+              that.setData({
+                notice: 'none',
+              })
+            }
+            that.setData({
+              allcomment: allcomment,
+              alldate: alldate,
+              allname: allname,
+              allimg: allimg,
+            })
+          }
         })
       }
     })

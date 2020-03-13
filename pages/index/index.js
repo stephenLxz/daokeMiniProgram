@@ -35,7 +35,8 @@ Page({
     courses: ['html', 'css', 'javascript', 'jquery', 'node', 'gulp', 'mongo', 'express'], // 存储课程的集合
 
     /** 数据加载的数据 */
-    show: true
+    show: true,
+    container: 'none'
   },
 
   /**
@@ -121,6 +122,7 @@ Page({
     this.timer = setTimeout(() => {
       that.setData({
         show: false,
+        container: 'inherit',
       })
       wx.showTabBar({})
     }, 1000)
@@ -143,6 +145,7 @@ Page({
     })
     this.setData({
       show: true,
+      container: 'none'
     })
     clearTimeout(this.timer);
   },
