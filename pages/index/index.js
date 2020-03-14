@@ -49,11 +49,13 @@ Page({
     var arr = [];
     // 判断数据中的字符串是否含有该字符
     if (inputvalue.trim().length != 0) {
+      // 定义一个正则表达式
+      var reg = new RegExp(inputvalue, 'i')
       // 当输入值不为空
       courses.forEach(str => {
         // 使用定时器能够提高用户体验以及性能
         return setTimeout(() => {
-          if (str.search(inputvalue) != -1) {
+          if (reg.test(str)) {
             arr.push(str);
           }
           that.setData({
