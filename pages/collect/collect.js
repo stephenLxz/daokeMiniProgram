@@ -62,6 +62,8 @@ Page({
         collectTitles: collectTitles,
         progress: progress,
         delflag: false,
+        noticeshow: 'flex',
+        noticecontent: '您未收藏任何课程哦！'
       })
 
       // 将数据更新到数据库中
