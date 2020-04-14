@@ -62,9 +62,13 @@ Page({
         collectTitles: collectTitles,
         progress: progress,
         delflag: false,
-        noticeshow: 'flex',
-        noticecontent: '您未收藏任何课程哦！'
       })
+      if (collects.length === 0) {
+        this.setData({
+          noticeshow: 'flex',
+          noticecontent: '您未收藏任何课程哦！'
+        })
+      }
 
       // 将数据更新到数据库中
       db.collection('user').doc(collectname).update({
